@@ -1,0 +1,426 @@
+:root {
+    --primary-green: #2E8B57;
+    --light-green: #90EE90;
+    --dark-green: #1B5E20;
+    --earth-brown: #8D6E63;
+    --sky-blue: #87CEEB;
+    --fruit-orange: #FF8C00;
+    --fruit-red: #E53935;
+    --cream: #FFF8E1;
+    --white: #FFFFFF;
+    --text-dark: #333333;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: #F5F9F5;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--fruit-orange);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+nav a:hover, nav a.active {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--fruit-orange);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #E67E00;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: var(--cream);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-green);
+}
+
+/* Dashboard Section */
+.dashboard {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.chart-container {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.chart-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+/* Farmer & Buyer Sections */
+.farmer-section, .buyer-section {
+    padding: 80px 0;
+}
+
+.farmer-section {
+    background-color: var(--cream);
+}
+
+.buyer-section {
+    background-color: var(--white);
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-green);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-green);
+    outline: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Harvest Listings */
+.harvest-listings {
+    margin-top: 40px;
+}
+
+.harvest-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.harvest-info h4 {
+    font-size: 1.4rem;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.harvest-info p {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.harvest-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-small {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+/* Blockchain Section */
+.blockchain {
+    padding: 80px 0;
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+.blockchain-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.blockchain-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.blockchain-visual {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.blockchain-block {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.blockchain-block:last-child {
+    margin-bottom: 0;
+}
+
+.blockchain-block h4 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--earth-brown);
+    color: var(--white);
+    padding: 60px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--light-green);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--light-green);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-container, .blockchain-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .harvest-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
