@@ -7,434 +7,435 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        :root {
-            --primary-green: #2E8B57;
-            --light-green: #90EE90;
-            --dark-green: #1B5E20;
-            --earth-brown: #8D6E63;
-            --sky-blue: #87CEEB;
-            --fruit-orange: #FF8C00;
-            --fruit-red: #E53935;
-            --cream: #FFF8E1;
-            --white: #FFFFFF;
-            --text-dark: #333333;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+    * {
+    --primary-green: #2E8B57;
+    --light-green: #90EE90;
+    --dark-green: #1B5E20;
+    --earth-brown: #8D6E63;
+    --sky-blue: #87CEEB;
+    --fruit-orange: #FF8C00;
+    --fruit-red: #E53935;
+    --cream: #FFF8E1;
+    --white: #FFFFFF;
+    --text-dark: #333333;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
 
-        body {
-            background-color: #F5F9F5;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+body {
+    background-color: #F5F9F5;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-            color: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
-        .logo i {
-            font-size: 2rem;
-            color: var(--fruit-orange);
-        }
+.logo i {
+    font-size: 2rem;
+    color: var(--fruit-orange);
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
 
-        nav a:hover, nav a.active {
-            background-color: rgba(255,255,255,0.2);
-        }
+nav a:hover, nav a.active {
+    background-color: rgba(255,255,255,0.2);
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 120px 20px;
-        }
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 120px 20px;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
+.hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
 
-        .btn {
-            display: inline-block;
-            background-color: var(--fruit-orange);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
+.btn {
+    display: inline-block;
+    background-color: var(--fruit-orange);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
 
-        .btn:hover {
-            background-color: #E67E00;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
+.btn:hover {
+    background-color: #E67E00;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
 
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background-color: var(--cream);
-        }
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: var(--cream);
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark-green);
-            margin-bottom: 15px;
-        }
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
 
-        .section-title p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #555;
-        }
+.section-title p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+}
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
 
-        .feature-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
+.feature-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
+.feature-card:hover {
+    transform: translateY(-10px);
+}
 
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 20px;
-        }
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark-green);
-        }
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-green);
+}
 
-        /* Dashboard Section */
-        .dashboard {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
+/* Dashboard Section */
+.dashboard {
+    padding: 80px 0;
+    background-color: var(--white);
+}
 
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
 
-        .chart-container {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-        }
+.chart-container {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
 
-        .chart-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: var(--dark-green);
-            text-align: center;
-        }
+.chart-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--dark-green);
+    text-align: center;
+}
 
-        /* Farmer & Buyer Sections */
-        .farmer-section, .buyer-section {
-            padding: 80px 0;
-        }
+/* Farmer & Buyer Sections */
+.farmer-section, .buyer-section {
+    padding: 80px 0;
+}
 
-        .farmer-section {
-            background-color: var(--cream);
-        }
+.farmer-section {
+    background-color: var(--cream);
+}
 
-        .buyer-section {
-            background-color: var(--white);
-        }
+.buyer-section {
+    background-color: var(--white);
+}
 
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
 
-        .form-group {
-            margin-bottom: 25px;
-        }
+.form-group {
+    margin-bottom: 25px;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark-green);
-        }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-green);
+}
 
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
 
-        .form-control:focus {
-            border-color: var(--primary-green);
-            outline: none;
-        }
+.form-control:focus {
+    border-color: var(--primary-green);
+    outline: none;
+}
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-        /* Harvest Listings */
-        .harvest-listings {
-            margin-top: 40px;
-        }
+/* Harvest Listings */
+.harvest-listings {
+    margin-top: 40px;
+}
 
-        .harvest-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.harvest-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .harvest-info h4 {
-            font-size: 1.4rem;
-            color: var(--dark-green);
-            margin-bottom: 10px;
-        }
+.harvest-info h4 {
+    font-size: 1.4rem;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
 
-        .harvest-info p {
-            margin-bottom: 5px;
-            color: #555;
-        }
+.harvest-info p {
+    margin-bottom: 5px;
+    color: #555;
+}
 
-        .harvest-actions {
-            display: flex;
-            gap: 15px;
-        }
+.harvest-actions {
+    display: flex;
+    gap: 15px;
+}
 
-        .btn-small {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
+.btn-small {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            color: var(--primary-green);
-        }
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
 
-        .btn-outline:hover {
-            background-color: var(--primary-green);
-            color: var(--white);
-        }
+.btn-outline:hover {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
 
-        /* Blockchain Section */
-        .blockchain {
-            padding: 80px 0;
-            background-color: var(--dark-green);
-            color: var(--white);
-        }
+/* Blockchain Section */
+.blockchain {
+    padding: 80px 0;
+    background-color: var(--dark-green);
+    color: var(--white);
+}
 
-        .blockchain-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
+.blockchain-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
 
-        .blockchain-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
+.blockchain-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
 
-        .blockchain-visual {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-        }
+.blockchain-visual {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
 
-        .blockchain-block {
-            background: var(--white);
-            color: var(--text-dark);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+.blockchain-block {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-        .blockchain-block:last-child {
-            margin-bottom: 0;
-        }
+.blockchain-block:last-child {
+    margin-bottom: 0;
+}
 
-        .blockchain-block h4 {
-            color: var(--dark-green);
-            margin-bottom: 10px;
-        }
+.blockchain-block h4 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
 
-        /* Footer */
-        footer {
-            background-color: var(--earth-brown);
-            color: var(--white);
-            padding: 60px 0 30px;
-        }
+/* Footer */
+footer {
+    background-color: var(--earth-brown);
+    color: var(--white);
+    padding: 60px 0 30px;
+}
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
 
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--light-green);
-        }
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--light-green);
+}
 
-        .footer-col ul {
-            list-style: none;
-        }
+.footer-col ul {
+    list-style: none;
+}
 
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
+.footer-col ul li {
+    margin-bottom: 10px;
+}
 
-        .footer-col a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.footer-col a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-        .footer-col a:hover {
-            color: var(--light-green);
-        }
+.footer-col a:hover {
+    color: var(--light-green);
+}
 
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.9rem;
-        }
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+}
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .dashboard-container, .blockchain-container {
-                grid-template-columns: 1fr;
-            }
-        }
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-container, .blockchain-container {
+        grid-template-columns: 1fr;
+    }
+}
 
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .harvest-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-        }
-    </style>
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .harvest-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+</style> 
 </head>
 <body>
     <!-- Header -->
@@ -688,333 +689,6 @@
         </div>
     </footer>
 
-    <script>
-        // Sample data
-        let harvests = [
-            {
-                id: 1,
-                farmerName: "สมศรี ใจดี",
-                province: "จันทบุรี",
-                fruitType: "ทุเรียน",
-                harvestDate: "2023-07-15",
-                quantity: 500,
-                price: 120,
-                description: "ทุเรียนหมอนทอง หวานมัน ไม่มีสารเคมี"
-            },
-            {
-                id: 2,
-                farmerName: "ประสิทธิ์ รักษ์ผลไม้",
-                province: "เชียงใหม่",
-                fruitType: "ลิ้นจี่",
-                harvestDate: "2023-06-20",
-                quantity: 300,
-                price: 85,
-                description: "ลิ้นจี่พันธุ์เชียงใหม่ หวานกรอบ"
-            },
-            {
-                id: 3,
-                farmerName: "มาลี ผลไม้สด",
-                province: "นราธิวาส",
-                fruitType: "ส้มโอ",
-                harvestDate: "2023-08-10",
-                quantity: 800,
-                price: 45,
-                description: "ส้มโอหวานฉ่ำ ไม่มีเมล็ด"
-            }
-        ];
-
-        let blockchain = [
-            {
-                id: "BLOCK001",
-                timestamp: "2023-06-01 14:30:22",
-                transaction: "ซื้อ ทุเรียน 200kg @ 120บ./kg",
-                farmer: "สมศรี ใจดี",
-                buyer: "บริษัท ผลไม้ไทย จำกัด",
-                amount: "24,000 บาท"
-            },
-            {
-                id: "BLOCK002",
-                timestamp: "2023-06-05 09:15:47",
-                transaction: "ซื้อ ลิ้นจี่ 150kg @ 85บ./kg",
-                farmer: "ประสิทธิ์ รักษ์ผลไม้",
-                buyer: "ตลาดสดเมืองเชียงใหม่",
-                amount: "12,750 บาท"
-            },
-            {
-                id: "BLOCK003",
-                timestamp: "2023-06-10 11:45:33",
-                transaction: "ซื้อ ส้มโอ 300kg @ 45บ./kg",
-                farmer: "มาลี ผลไม้สด",
-                buyer: "ร้านค้าปลีก สุขใจ",
-                amount: "13,500 บาท"
-            }
-        ];
-
-        // Initialize Charts
-        function initCharts() {
-            // Oversupply Chart
-            const oversupplyCtx = document.getElementById('oversupplyChart').getContext('2d');
-            new Chart(oversupplyCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['เชียงใหม่', 'เชียงราย', 'นครราชสีมา', 'จันทบุรี', 'ตราด', 'สุราษฎร์ธานี'],
-                    datasets: [{
-                        label: 'อัตราการทำนายอุปทานเกิน (%)',
-                        data: [15, 8, 22, 35, 28, 12],
-                        backgroundColor: [
-                            'rgba(46, 139, 87, 0.6)',
-                            'rgba(46, 139, 87, 0.6)',
-                            'rgba(255, 140, 0, 0.7)',
-                            'rgba(229, 57, 53, 0.7)',
-                            'rgba(255, 140, 0, 0.7)',
-                            'rgba(46, 139, 87, 0.6)'
-                        ],
-                        borderColor: [
-                            'rgba(46, 139, 87, 1)',
-                            'rgba(46, 139, 87, 1)',
-                            'rgba(255, 140, 0, 1)',
-                            'rgba(229, 57, 53, 1)',
-                            'rgba(255, 140, 0, 1)',
-                            'rgba(46, 139, 87, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `อุปทานเกิน: ${context.raw}%`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 50,
-                            title: {
-                                display: true,
-                                text: 'อัตราการทำนาย (%)'
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Demand Chart
-            const demandCtx = document.getElementById('demandChart').getContext('2d');
-            new Chart(demandCtx, {
-                type: 'line',
-                data: {
-                    labels: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
-                    datasets: [{
-                        label: 'ทุเรียน',
-                        data: [30, 45, 70, 95, 120, 150, 180, 160, 90, 60, 40, 25],
-                        borderColor: 'rgba(229, 57, 53, 1)',
-                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }, {
-                        label: 'มังคุด',
-                        data: [20, 30, 50, 80, 110, 140, 170, 190, 160, 100, 50, 30],
-                        borderColor: 'rgba(46, 139, 87, 1)',
-                        backgroundColor: 'rgba(46, 139, 87, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }, {
-                        label: 'ลิ้นจี่',
-                        data: [40, 60, 90, 120, 100, 80, 60, 40, 30, 50, 70, 90],
-                        borderColor: 'rgba(255, 140, 0, 1)',
-                        backgroundColor: 'rgba(255, 140, 0, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'ดัชนีความต้องการ'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-      function displayHarvests() {
-            const listingsContainer = document.getElementById('harvestListings');
-            listingsContainer.innerHTML = '';
-
-            harvests.forEach(harvest => {
-                const harvestCard = document.createElement('div');
-                harvestCard.className = 'harvest-card';
-                harvestCard.innerHTML = `
-                    <div class="harvest-info">
-                        <h4>${harvest.fruitType} - ${harvest.province}</h4>
-                        <p><i class="fas fa-user"></i> <strong>เกษตรกร:</strong> ${harvest.farmerName}</p>
-                        <p><i class="fas fa-calendar-alt"></i> <strong>วันเก็บเกี่ยว:</strong> ${harvest.harvestDate}</p>
-                        <p><i class="fas fa-weight"></i> <strong>ปริมาณ:</strong> ${harvest.quantity} กิโลกรัม</p>
-                        <p><i class="fas fa-tag"></i> <strong>ราคา:</strong> ${harvest.price} บาท/กิโลกรัม</p>
-                        <p><i class="fas fa-info-circle"></i> ${harvest.description}</p>
-                    </div>
-                    <div class="harvest-actions">
-                        <button class="btn btn-small btn-outline" onclick="placeBid(${harvest.id})">ประมูล</button>
-                        <button class="btn btn-small" onclick="preOrder(${harvest.id})">สั่งซื้อล่วงหน้า</button>
-                    </div>
-                `;
-                listingsContainer.appendChild(harvestCard);
-            });
-        }
-
-        
-
-        // Display Blockchain
-        function displayBlockchain() {
-            const blocksContainer = document.getElementById('blockchainBlocks');
-            blocksContainer.innerHTML = '';
-
-            blockchain.slice(0, 3).forEach(block => {
-                const blockElement = document.createElement('div');
-                blockElement.className = 'blockchain-block';
-                blockElement.innerHTML = `
-                    <h4>${block.id}</h4>
-                    <p><strong>เวลา:</strong> ${block.timestamp}</p>
-                    <p><strong>รายการ:</strong> ${block.transaction}</p>
-                    <p><strong>เกษตรกร:</strong> ${block.farmer}</p>
-                    <p><strong>ผู้ซื้อ:</strong> ${block.buyer}</p>
-                    <p><strong>จำนวนเงิน:</strong> ${block.amount}</p>
-                `;
-                blocksContainer.appendChild(blockElement);
-            });
-        }
-
-        // Handle Harvest Form Submission
-        document.getElementById('harvestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newHarvest = {
-                id: harvests.length + 1,
-                farmerName: document.getElementById('farmerName').value,
-                province: document.getElementById('province').value,
-                fruitType: document.getElementById('fruitType').value,
-                harvestDate: document.getElementById('harvestDate').value,
-                quantity: parseInt(document.getElementById('quantity').value),
-                price: parseInt(document.getElementById('price').value),
-                description: document.getElementById('description').value
-            };
-            
-            harvests.push(newHarvest);
-            displayHarvests();
-            
-            // Reset form
-            this.reset();
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'alert-success';
-            successMessage.textContent = 'อัปโหลดข้อมูลการเก็บเกี่ยวสำเร็จ!';
-            successMessage.style.cssText = `
-                background-color: #d4edda;
-                color: #155724;
-                padding: 15px;
-                border-radius: 8px;
-                margin-top: 20px;
-                text-align: center;
-                font-weight: 500;
-            `;
-            
-            document.querySelector('.form-container').appendChild(successMessage);
-            
-            setTimeout(() => {
-                successMessage.remove();
-            }, 3000);
-        });
-
-        // Place Bid Function
-        function placeBid(harvestId) {
-            const harvest = harvests.find(h => h.id === harvestId);
-            if (harvest) {
-                const bidAmount = prompt(`ป้อนราคาที่ต้องการประมูลสำหรับ ${harvest.fruitType} (ราคาเริ่มต้น: ${harvest.price} บาท/กิโลกรัม):`);
-                if (bidAmount && !isNaN(bidAmount) && bidAmount > 0) {
-                    // Add to blockchain
-                    const newBlock = {
-                        id: `BLOCK${String(blockchain.length + 1).padStart(3, '0')}`,
-                        timestamp: new Date().toLocaleString('th-TH'),
-                        transaction: `ประมูล ${harvest.fruitType} ${harvest.quantity}kg @ ${bidAmount}บ./kg`,
-                        farmer: harvest.farmerName,
-                        buyer: "ผู้ซื้อทั่วไป",
-                        amount: `${(harvest.quantity * bidAmount).toLocaleString()} บาท`
-                    };
-                    
-                    blockchain.unshift(newBlock);
-                    displayBlockchain();
-                    
-                    alert(`ประมูลสำเร็จ! ราคา ${bidAmount} บาท/กิโลกรัม สำหรับ ${harvest.fruitType}`);
-                }
-            }
-        }
-
-        // Pre-order Function
-        function preOrder(harvestId) {
-            const harvest = harvests.find(h => h.id === harvestId);
-            if (harvest) {
-                const quantity = prompt(`ป้อนปริมาณที่ต้องการสั่งซื้อ (สูงสุด: ${harvest.quantity} กิโลกรัม):`);
-                if (quantity && !isNaN(quantity) && quantity > 0 && quantity <= harvest.quantity) {
-                    // Add to blockchain
-                    const newBlock = {
-                        id: `BLOCK${String(blockchain.length + 1).padStart(3, '0')}`,
-                        timestamp: new Date().toLocaleString('th-TH'),
-                        transaction: `สั่งซื้อล่วงหน้า ${harvest.fruitType} ${quantity}kg @ ${harvest.price}บ./kg`,
-                        farmer: harvest.farmerName,
-                        buyer: "ผู้ซื้อทั่วไป",
-                        amount: `${(quantity * harvest.price).toLocaleString()} บาท`
-                    };
-                    
-                    blockchain.unshift(newBlock);
-                    displayBlockchain();
-                    
-                    alert(`สั่งซื้อล่วงหน้าสำเร็จ! ${quantity} กิโลกรัม ของ ${harvest.fruitType}`);
-                }
-            }
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            initCharts();
-            displayHarvests();
-            displayBlockchain();
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
