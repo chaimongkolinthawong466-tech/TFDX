@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Fruit Data Exchange (TFDX)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-green: #2E8B57;
+            --light-green: #90EE90;
+            --dark-green: #1B5E20;
+            --earth-brown: #8D6E63;
+            --sky-blue: #87CEEB;
+            --fruit-orange: #FF8C00;
+            --fruit-red: #E53935;
+            --cream: #FFF8E1;
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #F5F9F5;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--fruit-orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--fruit-orange);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #E67E00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--cream);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .chart-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .chart-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+            text-align: center;
+        }
+
+        /* Farmer & Buyer Sections */
+        .farmer-section, .buyer-section {
+            padding: 80px 0;
+        }
+
+        .farmer-section {
+            background-color: var(--cream);
+        }
+
+        .buyer-section {
+            background-color: var(--white);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-green);
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Harvest Listings */
+        .harvest-listings {
+            margin-top: 40px;
+        }
+
+        .harvest-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .harvest-info h4 {
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+
+        .harvest-info p {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .harvest-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Blockchain Section */
+        .blockchain {
+            padding: 80px 0;
+            background-color: var(--dark-green);
+            color: var(--white);
+        }
+
+        .blockchain-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .blockchain-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .blockchain-visual {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .blockchain-block {
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .blockchain-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .blockchain-block h4 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--earth-brown);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light-green);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--light-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .dashboard-container, .blockchain-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .harvest-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span>TFDX</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">หน้าแรก</a></li>
+                    <li><a href="#features">คุณสมบัติ</a></li>
+                    <li><a href="#dashboard">แดชบอร์ด</a></li>
+                    <li><a href="#farmer">เกษตรกร</a></li>
+                    <li><a href="#buyer">ผู้ซื้อ</a></li>
+                    <li><a href="#blockchain">บล็อกเชน</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Thai Fruit Data Exchange</h1>
+            <p>แพลตฟอร์มกลางเพื่อการค้าผลไม้ไทย ลดปัญหาอุปทานเกิน และสร้างโอกาสทางการเงินให้เกษตรกร</p>
+            <a href="#features" class="btn">เรียนรู้เพิ่มเติม</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>คุณสมบัติของ TFDX</h2>
+                <p>แพลตฟอร์มที่รวมระบบการค้า การวิเคราะห์ข้อมูล และเทคโนโลยีบล็อกเชนเพื่อเกษตรกรไทย</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>เกษตรกรเป็นผู้ขาย</h3>
+                    <p>อัปโหลดข้อมูลการเก็บเกี่ยวล่วงหน้า เพื่อให้ผู้ซื้อวางแผนการซื้อล่วงหน้าได้</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>ผู้ซื้อทุกระดับ</h3>
+                    <p>ผู้ค้าส่ง ผู้ค้าปลีก และผู้บริโภคสามารถประมูลหรือสั่งซื้อล่วงหน้าได้ทันที</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>บล็อกเชน</h3>
+                    <p>บันทึกธุรกรรมทั้งหมดด้วยบล็อกเชน โปร่งใสและใช้เป็นประวัติเครดิตได้</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>แดชบอร์ด AI</h3>
+                    <p>วิเคราะห์ข้อมูลเพื่อทำนายจังหวัดที่จะมีอุปทานเกินหรือขาดแคลน</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>การเข้าถึงเงินทุน</h3>
+                    <p>ประวัติธุรกรรมบนบล็อกเชนช่วยให้เกษตรกรกู้ยืมเงินจากธ.ก.ส. ได้ง่ายขึ้น</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>ลดอุปทานเกิน</h3>
+                    <p>ระบบทำนายความต้องการช่วยลดปัญหาผลไม้ทิ้งและเพิ่มรายได้ให้เกษตรกร</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>แดชบอร์ด AI</h2>
+                <p>วิเคราะห์ข้อมูลเพื่อทำนายอุปทานและความต้องการผลไม้ทั่วประเทศ</p>
+            </div>
+            <div class="dashboard-container">
+                <div class="chart-container">
+                    <h3 class="chart-title">การทำนายอุปทานเกิน (Oversupply)</h3>
+                    <canvas id="oversupplyChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">การทำนายความต้องการ (Demand)</h3>
+                    <canvas id="demandChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farmer Section -->
+    <section id="farmer" class="farmer-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>สำหรับเกษตรกร</h2>
+                <p>อัปโหลดข้อมูลการเก็บเกี่ยวผลไม้ของคุณเพื่อให้ผู้ซื้อทราบล่วงหน้า</p>
+            </div>
+            <div class="form-container">
+                <form id="harvestForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="farmerName">ชื่อเกษตรกร</label>
+                            <input type="text" id="farmerName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="province">จังหวัด</label>
+                            <select id="province" class="form-control" required>
+                                <option value="">เลือกจังหวัด</option>
+                                <option value="เชียงใหม่">เชียงใหม่</option>
+                                <option value="เชียงราย">เชียงราย</option>
+                                <option value="นครราชสีมา">นครราชสีมา</option>
+                                <option value="ระยอง">ระยอง</option>
+                                <option value="จันทบุรี">จันทบุรี</option>
+                                <option value="ตราด">ตราด</option>
+                                <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                                <option value="นราธิวาส">นราธิวาส</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fruitType">ประเภทผลไม้</label>
+                            <select id="fruitType" class="form-control" required>
+                                <option value="">เลือกประเภทผลไม้</option>
+                                <option value="ทุเรียน">ทุเรียน</option>
+                                <option value="มังคุด">มังคุด</option>
+                                <option value="เงาะ">เงาะ</option>
+                                <option value="ลิ้นจี่">ลิ้นจี่</option>
+                                <option value="ท้อ">ท้อ</option>
+                                <option value="ส้มโอ">ส้มโอ</option>
+                                <option value="กล้วย">กล้วย</option>
+                                <option value="มะพร้าว">มะพร้าว</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="harvestDate">วันที่คาดว่าจะเก็บเกี่ยว</label>
+                            <input type="date" id="harvestDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">ปริมาณ (กิโลกรัม)</label>
+                            <input type="number" id="quantity" class="form-control" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">ราคาที่คาดหวัง (บาท/กิโลกรัม)</label>
+                            <input type="number" id="price" class="form-control" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">รายละเอียดเพิ่มเติม</label>
+                        <textarea id="description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn">อัปโหลดข้อมูลการเก็บเกี่ยว</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buyer Section -->
+    <section id="buyer" class="buyer-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>สำหรับผู้ซื้อ</h2>
+                <p>ค้นหาและประมูลผลไม้คุณภาพจากเกษตรกรทั่วประเทศ</p>
+            </div>
+            <div class="harvest-listings" id="harvestListings">
+                <!-- Harvest listings will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Section -->
+    <section id="blockchain" class="blockchain">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--white);">บล็อกเชนธุรกรรม</h2>
+                <p style="color: rgba(255,255,255,0.8);">บันทึกธุรกรรมทั้งหมดอย่างโปร่งใสและปลอดภัย</p>
+            </div>
+            <div class="blockchain-container">
+                <div class="blockchain-info">
+                    <h3>บล็อกเชนสำหรับเกษตรกร</h3>
+                    <p>ระบบบล็อกเชนของ TFDX บันทึกทุกธุรกรรมการซื้อขายผลไม้อย่างถาวรและไม่สามารถแก้ไขได้</p>
+                    <p>ข้อมูลนี้สามารถใช้เป็นประวัติเครดิตเพื่อขอกู้ยืมเงินจากธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร (ธ.ก.ส.) ได้</p>
+                    <p>เกษตรกรที่มีประวัติธุรกรรมดีจะได้รับการพิจารณาเงินกู้ในอัตราดอกเบี้ยพิเศษ</p>
+                </div>
+                <div class="blockchain-visual">
+                    <h4 style="margin-bottom: 20px; color: var(--light-green);">บล็อกล่าสุด</h4>
+                    <div id="blockchainBlocks">
+                        <!-- Blockchain blocks will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TFDX</h3>
+                    <p>Thai Fruit Data Exchange เป็นแพลตฟอร์มที่เชื่อมโยงเกษตรกรกับผู้ซื้อโดยตรง พร้อมเทคโนโลยี AI และบล็อกเชนเพื่อการพัฒนาเกษตรกรรมยั่งยืน</p>
+                </div>
+                <div class="footer-col">
+                    <h3>ลิงก์ด่วน</h3>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#features">คุณสมบัติ</a></li>
+                        <li><a href="#dashboard">แดชบอร์ด</a></li>
+                        <li><a href="#farmer">เกษตรกร</a></li>
+                        <li><a href="#buyer">ผู้ซื้อ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>ติดต่อเรา</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 ถนนเกษตรกรรม กรุงเทพฯ 10310</li>
+                        <li><i class="fas fa-phone"></i> 02-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tfdx.co.th</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>ติดตามเรา</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Thai Fruit Data Exchange (TFDX). สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data
+        let harvests = [
+            {
+                id: 1,
+                farmerName: "สมศรี ใจดี",
+                province: "จันทบุรี",
+                fruitType: "ทุเรียน",
+                harvestDate: "2023-07-15",
+                quantity: 500,
+                price: 120,
+                description: "ทุเรียนหมอนทอง หวานมัน ไม่มีสารเคมี"
+            },
+            {
+                id: 2,
+                farmerName: "ประสิทธิ์ รักษ์ผลไม้",
+                province: "เชียงใหม่",
+                fruitType: "ลิ้นจี่",
+                harvestDate: "2023-06-20",
+                quantity: 300,
+                price: 85,
+                description: "ลิ้นจี่พันธุ์เชียงใหม่ หวานกรอบ"
+            },
+            {
+                id: 3,
+                farmerName: "มาลี ผลไม้สด",
+                province: "นราธิวาส",
+                fruitType: "ส้มโอ",
+                harvestDate: "2023-08-10",
+                quantity: 800,
+                price: 45,
+                description: "ส้มโอหวานฉ่ำ ไม่มีเมล็ด"
+            }
+        ];
+
+        let blockchain = [
+            {
+                id: "BLOCK001",
+                timestamp: "2023-06-01 14:30:22",
+                transaction: "ซื้อ ทุเรียน 200kg @ 120บ./kg",
+                farmer: "สมศรี ใจดี",
+                buyer: "บริษัท ผลไม้ไทย จำกัด",
+                amount: "24,000 บาท"
+            },
+            {
+                id: "BLOCK002",
+                timestamp: "2023-06-05 09:15:47",
+                transaction: "ซื้อ ลิ้นจี่ 150kg @ 85บ./kg",
+                farmer: "ประสิทธิ์ รักษ์ผลไม้",
+                buyer: "ตลาดสดเมืองเชียงใหม่",
+                amount: "12,750 บาท"
+            },
+            {
+                id: "BLOCK003",
+                timestamp: "2023-06-10 11:45:33",
+                transaction: "ซื้อ ส้มโอ 300kg @ 45บ./kg",
+                farmer: "มาลี ผลไม้สด",
+                buyer: "ร้านค้าปลีก สุขใจ",
+                amount: "13,500 บาท"
+            }
+        ];
+
+        // Initialize Charts
+        function initCharts() {
+            // Oversupply Chart
+            const oversupplyCtx = document.getElementById('oversupplyChart').getContext('2d');
+            new Chart(oversupplyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['เชียงใหม่', 'เชียงราย', 'นครราชสีมา', 'จันทบุรี', 'ตราด', 'สุราษฎร์ธานี'],
+                    datasets: [{
+                        label: 'อัตราการทำนายอุปทานเกิน (%)',
+                        data: [15, 8, 22, 35, 28, 12],
+                        backgroundColor: [
+                            'rgba(46, 139, 87, 0.6)',
+                            'rgba(46, 139, 87, 0.6)',
+                            'rgba(255, 140, 0, 0.7)',
+                            'rgba(229, 57, 53, 0.7)',
+                            'rgba(255, 140, 0, 0.7)',
+                            'rgba(46, 139, 87, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(46, 139, 87, 1)',
+                            'rgba(46, 139, 87, 1)',
+                            'rgba(255, 140, 0, 1)',
+                            'rgba(229, 57, 53, 1)',
+                            'rgba(255, 140, 0, 1)',
+                            'rgba(46, 139, 87, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `อุปทานเกิน: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 50,
+                            title: {
+                                display: true,
+                                text: 'อัตราการทำนาย (%)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Demand Chart
+            const demandCtx = document.getElementById('demandChart').getContext('2d');
+            new Chart(demandCtx, {
+                type: 'line',
+                data: {
+                    labels: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+                    datasets: [{
+                        label: 'ทุเรียน',
+                        data: [30, 45, 70, 95, 120, 150, 180, 160, 90, 60, 40, 25],
+                        borderColor: 'rgba(229, 57, 53, 1)',
+                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'มังคุด',
+                        data: [20, 30, 50, 80, 110, 140, 170, 190, 160, 100, 50, 30],
+                        borderColor: 'rgba(46, 139, 87, 1)',
+                        backgroundColor: 'rgba(46, 139, 87, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'ลิ้นจี่',
+                        data: [40, 60, 90, 120, 100, 80, 60, 40, 30, 50, 70, 90],
+                        borderColor: 'rgba(255, 140, 0, 1)',
+                        backgroundColor: 'rgba(255, 140, 0, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'ดัชนีความต้องการ'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+      function displayHarvests() {
+            const listingsContainer = document.getElementById('harvestListings');
+            listingsContainer.innerHTML = '';
+
+            harvests.forEach(harvest => {
+                const harvestCard = document.createElement('div');
+                harvestCard.className = 'harvest-card';
+                harvestCard.innerHTML = `
+                    <div class="harvest-info">
+                        <h4>${harvest.fruitType} - ${harvest.province}</h4>
+                        <p><i class="fas fa-user"></i> <strong>เกษตรกร:</strong> ${harvest.farmerName}</p>
+                        <p><i class="fas fa-calendar-alt"></i> <strong>วันเก็บเกี่ยว:</strong> ${harvest.harvestDate}</p>
+                        <p><i class="fas fa-weight"></i> <strong>ปริมาณ:</strong> ${harvest.quantity} กิโลกรัม</p>
+                        <p><i class="fas fa-tag"></i> <strong>ราคา:</strong> ${harvest.price} บาท/กิโลกรัม</p>
+                        <p><i class="fas fa-info-circle"></i> ${harvest.description}</p>
+                    </div>
+                    <div class="harvest-actions">
+                        <button class="btn btn-small btn-outline" onclick="placeBid(${harvest.id})">ประมูล</button>
+                        <button class="btn btn-small" onclick="preOrder(${harvest.id})">สั่งซื้อล่วงหน้า</button>
+                    </div>
+                `;
+                listingsContainer.appendChild(harvestCard);
+            });
+        }
+
+        
+
+        // Display Blockchain
+        function displayBlockchain() {
+            const blocksContainer = document.getElementById('blockchainBlocks');
+            blocksContainer.innerHTML = '';
+
+            blockchain.slice(0, 3).forEach(block => {
+                const blockElement = document.createElement('div');
+                blockElement.className = 'blockchain-block';
+                blockElement.innerHTML = `
+                    <h4>${block.id}</h4>
+                    <p><strong>เวลา:</strong> ${block.timestamp}</p>
+                    <p><strong>รายการ:</strong> ${block.transaction}</p>
+                    <p><strong>เกษตรกร:</strong> ${block.farmer}</p>
+                    <p><strong>ผู้ซื้อ:</strong> ${block.buyer}</p>
+                    <p><strong>จำนวนเงิน:</strong> ${block.amount}</p>
+                `;
+                blocksContainer.appendChild(blockElement);
+            });
+        }
+
+        // Handle Harvest Form Submission
+        document.getElementById('harvestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newHarvest = {
+                id: harvests.length + 1,
+                farmerName: document.getElementById('farmerName').value,
+                province: document.getElementById('province').value,
+                fruitType: document.getElementById('fruitType').value,
+                harvestDate: document.getElementById('harvestDate').value,
+                quantity: parseInt(document.getElementById('quantity').value),
+                price: parseInt(document.getElementById('price').value),
+                description: document.getElementById('description').value
+            };
+            
+            harvests.push(newHarvest);
+            displayHarvests();
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'alert-success';
+            successMessage.textContent = 'อัปโหลดข้อมูลการเก็บเกี่ยวสำเร็จ!';
+            successMessage.style.cssText = `
+                background-color: #d4edda;
+                color: #155724;
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 20px;
+                text-align: center;
+                font-weight: 500;
+            `;
+            
+            document.querySelector('.form-container').appendChild(successMessage);
+            
+            setTimeout(() => {
+                successMessage.remove();
+            }, 3000);
+        });
+
+        // Place Bid Function
+        function placeBid(harvestId) {
+            const harvest = harvests.find(h => h.id === harvestId);
+            if (harvest) {
+                const bidAmount = prompt(`ป้อนราคาที่ต้องการประมูลสำหรับ ${harvest.fruitType} (ราคาเริ่มต้น: ${harvest.price} บาท/กิโลกรัม):`);
+                if (bidAmount && !isNaN(bidAmount) && bidAmount > 0) {
+                    // Add to blockchain
+                    const newBlock = {
+                        id: `BLOCK${String(blockchain.length + 1).padStart(3, '0')}`,
+                        timestamp: new Date().toLocaleString('th-TH'),
+                        transaction: `ประมูล ${harvest.fruitType} ${harvest.quantity}kg @ ${bidAmount}บ./kg`,
+                        farmer: harvest.farmerName,
+                        buyer: "ผู้ซื้อทั่วไป",
+                        amount: `${(harvest.quantity * bidAmount).toLocaleString()} บาท`
+                    };
+                    
+                    blockchain.unshift(newBlock);
+                    displayBlockchain();
+                    
+                    alert(`ประมูลสำเร็จ! ราคา ${bidAmount} บาท/กิโลกรัม สำหรับ ${harvest.fruitType}`);
+                }
+            }
+        }
+
+        // Pre-order Function
+        function preOrder(harvestId) {
+            const harvest = harvests.find(h => h.id === harvestId);
+            if (harvest) {
+                const quantity = prompt(`ป้อนปริมาณที่ต้องการสั่งซื้อ (สูงสุด: ${harvest.quantity} กิโลกรัม):`);
+                if (quantity && !isNaN(quantity) && quantity > 0 && quantity <= harvest.quantity) {
+                    // Add to blockchain
+                    const newBlock = {
+                        id: `BLOCK${String(blockchain.length + 1).padStart(3, '0')}`,
+                        timestamp: new Date().toLocaleString('th-TH'),
+                        transaction: `สั่งซื้อล่วงหน้า ${harvest.fruitType} ${quantity}kg @ ${harvest.price}บ./kg`,
+                        farmer: harvest.farmerName,
+                        buyer: "ผู้ซื้อทั่วไป",
+                        amount: `${(quantity * harvest.price).toLocaleString()} บาท`
+                    };
+                    
+                    blockchain.unshift(newBlock);
+                    displayBlockchain();
+                    
+                    alert(`สั่งซื้อล่วงหน้าสำเร็จ! ${quantity} กิโลกรัม ของ ${harvest.fruitType}`);
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            displayHarvests();
+            displayBlockchain();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
